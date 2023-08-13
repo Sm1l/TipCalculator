@@ -1,0 +1,86 @@
+.toggleComponent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.toggleContainer {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.title {
+  text-transform: capitalize;
+  color: var(--grayish-cyan);
+  font-size: var(--fzLabelMin);
+}
+.input {
+  background-color: var(--very-light-grayish-cyan);
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  color: var(--very-dark-cyan);
+  width: 100%;
+  text-align: end;
+
+  &:focus {
+    outline: 3px solid var(--light-grayish-cyan);
+  }
+
+  &::placeholder {
+    text-transform: capitalize;
+    text-align: center;
+    opacity: 0.5;
+    font-size: 20px;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+  padding: 15px;
+  color: var(--light-grayish-cyan);
+  background-color: var(--very-dark-cyan);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 300ms ease-out;
+  font-size: 20px;
+
+  &:hover {
+    color: var(--very-dark-cyan);
+    background-color: var(--light-grayish-cyan);
+    transition: background-color 300ms ease-out;
+  }
+  &:disabled {
+    background-color: var(--dark-grayish-cyan);
+    cursor: auto;
+  }
+}
+.error {
+  position: absolute;
+  bottom: -18px;
+  right: 0;
+  color: var(--error);
+  font-size: 10px;
+}
+.active {
+  color: var(--very-dark-cyan);
+  background-color: var(--strong-cyan);
+}
+
+@media (min-width: 580px) {
+  .toggleContainer {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .title {
+    font-size: var(--fzLabelMax);
+  }
+
+  .error {
+    font-size: 12px;
+  }
+}

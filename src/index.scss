@@ -1,0 +1,49 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--fzMin);
+  font-weight: 700;
+  @media (min-width: 580px) {
+    font-size: var(--fzMax);
+  }
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:root {
+  //*colors
+  --strong-cyan: #26c0ab;
+  --very-dark-cyan: #00494d;
+  --dark-grayish-cyan: #5e7a7d;
+  --light-grayish-cyan: #c5e4e7;
+  --grayish-cyan: #7f9c9f;
+  --very-light-grayish-cyan: #f4fafa;
+  --white: #ffffff;
+  --error: #cb7c7c;
+  //*font-size
+  --fzMax: 24px;
+  --fzMin: 18px;
+  --fzLabelMin: 14px;
+  --fzLabelMax: 18px;
+}
+
+//*hide index (type=number) arrows
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

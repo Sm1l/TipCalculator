@@ -1,0 +1,26 @@
+.mainContainer {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  width: 100%;
+  background-color: var(--white);
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  gap: 10px;
+}
+
+@media (min-width: 580px) {
+  .mainContainer {
+    width: auto;
+    grid-template-columns: minmax(520px, auto);
+  }
+}
+
+@media (min-width: 960px) {
+  .mainContainer {
+    grid-template-columns: 1fr minmax(520px, auto);
+    gap: 20px;
+    padding: 20px;
+  }
+}

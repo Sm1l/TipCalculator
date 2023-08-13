@@ -1,0 +1,41 @@
+.resultItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.container {
+}
+
+.text {
+  color: var(--light-grayish-cyan);
+  text-transform: capitalize;
+}
+
+.span {
+  color: var(--grayish-cyan);
+  text-transform: lowercase;
+  font-size: 14px;
+}
+
+.nums {
+  color: var(--strong-cyan);
+  font-size: 38px;
+  align-self: flex-end;
+}
+
+@media (min-width: 580px) {
+  .resultItem {
+    flex-direction: row;
+    // justify-content: space-between;
+    gap: 10px;
+  }
+
+  .span {
+    font-size: 16px;
+  }
+  .nums {
+    font-size: 48px;
+  }
+}

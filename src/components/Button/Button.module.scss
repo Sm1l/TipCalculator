@@ -1,0 +1,20 @@
+.button {
+  text-transform: uppercase;
+  padding: 15px;
+  color: var(--very-dark-cyan);
+  background-color: var(--strong-cyan);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 300ms ease-out;
+  font-size: 20px;
+
+  &:hover {
+    background-color: var(--light-grayish-cyan);
+    transition: background-color 300ms ease-out;
+  }
+  &:disabled {
+    background-color: var(--dark-grayish-cyan);
+    cursor: auto;
+  }
+}

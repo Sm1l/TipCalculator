@@ -1,0 +1,16 @@
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--very-dark-cyan);
+  border-radius: 15px;
+  border: none;
+  gap: 30px;
+}
+
+.resultItems {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
