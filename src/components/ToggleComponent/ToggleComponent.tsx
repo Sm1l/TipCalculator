@@ -1,50 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 
 import styles from "./ToggleComponent.module.scss";
 
-import { IFormValues } from "components/InputContainer";
-type tipFormType = Required<Pick<IFormValues, "tip">>;
-
-interface ToggleComponentProps {
-  tip: number;
-  setTip: React.Dispatch<React.SetStateAction<number>>;
-  clear: boolean;
+import { InputContainerProps } from "components/InputContainer";
+import { IFormValues } from "components/MainContainer";
+interface ToggleComponentProps extends InputContainerProps {
+  name: keyof IFormValues;
+  placeholder: string;
+  // activeButton: number;
+  // setActiveButton: React.Dispatch<React.SetStateAction<number>>; //!сделать конкретное
 }
 
-const ToggleComponent: React.FC<ToggleComponentProps> = ({ tip, setTip, clear }) => {
+const ToggleComponent: React.FC<ToggleComponentProps> = ({ name, placeholder, errors, register, rules }) => {
   const tipList: number[] = [5, 10, 15, 25, 50];
-  const {
-    register,
-    resetField,
-    watch,
-    formState: { errors },
-  } = useForm<tipFormType>({ mode: "onBlur" });
 
   //*buttons
+  //!!!!!!!!!!!!!!!!!!!отсюда начать. доделать кнопки.сброс инпута, и добавление значения в стэйт.
   const [active, setActive] = useState<number>(0);
   const handleClick = (tipValue: number) => {
-    if (tip !== tipValue) {
-      setTip(tipValue);
-      setActive(tipValue);
-      resetField("tip");
-    }
+    //   if (tip !== tipValue) {
+    //     setTip(tipValue);
+    setActive(tipValue);
+    //     resetField("tip");
+    //   }
   };
 
-  //*form input
-  const value = watch("tip");
-  useEffect(() => {
-    if (value && value >= 0) {
-      setTip(value);
-      setActive(0);
-    }
-  }, [value]);
+  // //*form input
+  // const value = watch("tip");
+  // useEffect(() => {
+  //   if (value && value >= 0) {
+  //     setTip(value);
+  //     setActive(0);
+  //   }
+  // }, [value]);
 
-  //*clear
-  useEffect(() => {
-    resetField("tip"); //?лучше задать значение 1. неуправляемая формаб рассинхрон со state.
-    //?button active clear?
-  }, [clear]);
+  // //*clear
+  // useEffect(() => {
+  //   resetField("tip"); //?лучше задать значение 1. неуправляемая формаб рассинхрон со state.
+  //   //?button active clear?
+  // }, [clear]);
 
   return (
     <div className={styles.toggleComponent}>
@@ -53,10 +47,12 @@ const ToggleComponent: React.FC<ToggleComponentProps> = ({ tip, setTip, clear })
         {tipList.map((tipValue: number) => {
           return (
             <button
-              className={tipValue === active && !clear ? `${styles.btn} ${styles.active}` : `${styles.btn}`}
+              className={tipValue === active ? `${styles.btn} ${styles.active}` : `${styles.btn}`}
+              // className={styles.btn}
               type="button"
               key={tipValue}
               onClick={() => handleClick(tipValue)}
+              // {...register(tipValue)}
             >
               {tipValue}%
             </button>
@@ -64,17 +60,12 @@ const ToggleComponent: React.FC<ToggleComponentProps> = ({ tip, setTip, clear })
         })}
         <input
           type="number"
-          placeholder="custom"
-          className={styles.input}
-          id="tip"
-          min={1}
-          max={1000}
-          {...register("tip", {
-            min: { value: 0, message: `Min value is 0` },
-            max: { value: 999, message: `Max value is 999` },
-          })}
+          placeholder={placeholder}
+          className={errors?.[`${name}`] ? `${styles.input} ${styles.inputError}` : styles.input} //!доделать зависимость от кнопок!
+          id={name}
+          {...register(name, rules)}
         />
-        <div className={styles.error}>{errors.tip && <p>{errors?.tip?.message || "error"}</p>}</div>
+        <div className={styles.error}>{errors?.[`${name}`] && <p>{errors?.[`${name}`]?.message || "error"}</p>}</div>
       </div>
     </div>
   );

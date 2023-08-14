@@ -6,6 +6,9 @@
 }
 
 .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .text {
@@ -28,7 +31,10 @@
 @media (min-width: 580px) {
   .resultItem {
     flex-direction: row;
-    // justify-content: space-between;
+    gap: 10px;
+  }
+  .container {
+    flex-direction: column;
     gap: 10px;
   }
 

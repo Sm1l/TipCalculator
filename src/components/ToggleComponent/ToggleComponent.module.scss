@@ -69,6 +69,9 @@
   color: var(--very-dark-cyan);
   background-color: var(--strong-cyan);
 }
+.inputError {
+  outline: 3px solid var(--error);
+}
 
 @media (min-width: 580px) {
   .toggleContainer {

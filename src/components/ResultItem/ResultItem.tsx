@@ -17,6 +17,7 @@ const ResultItem: React.FC<ResultItemProps> = ({ text, num }) => {
       </div>
       <div className={styles.nums}>
         <CountUp start={0} end={num} duration={0.5} prefix="₽" />
+        {/* <p>&#8381;</p> */}
       </div>
     </div>
   );
