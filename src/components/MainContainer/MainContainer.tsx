@@ -6,12 +6,11 @@ import { InputContainer } from "components/InputContainer";
 import { ResultContainer } from "components/ResultContainer";
 import { calcTotal, calcTipAmount } from "helpers/result";
 
-// import { resetAll } from "helpers/reset";
-
 export interface IFormValues {
   bill: number;
   tip: number;
   people: number;
+  radio: number;
 }
 
 interface MainContainerProps {}
@@ -22,24 +21,25 @@ const MainContainer: React.FC<MainContainerProps> = () => {
   const [people, setPeople] = useState<number>(1);
   const [tipAmount, setTimAmount] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
-  const [activeButton, setActiveButton] = useState<number>(0);
 
   const {
     register,
     handleSubmit,
     reset,
     watch,
+    resetField,
     formState: { errors },
   } = useForm<IFormValues>({ mode: "onBlur" });
 
   const handleReset = handleSubmit(() => {
     reset();
+    setTip(0); //*clear state
   });
-  // console.log(bill, tip, people);
 
   const watchBill = watch("bill");
   const watchTip = watch("tip");
   const watchPeople = watch("people");
+  const watchRadio = watch("radio");
 
   //!ё почему TS не ругается?
   useEffect(() => {
@@ -48,12 +48,24 @@ const MainContainer: React.FC<MainContainerProps> = () => {
   }, [watchBill]);
 
   useEffect(() => {
-    setTip(Number(watchTip));
+    if (watchTip) {
+      resetField("radio");
+      setTip(Number(watchTip));
+    }
   }, [watchTip]);
+
+  useEffect(() => {
+    if (watchRadio) {
+      resetField("tip");
+      setTip(Number(watchRadio));
+    }
+  }, [watchRadio]);
 
   useEffect(() => {
     setPeople(Number(watchPeople));
   }, [watchPeople]);
+
+  // console.log(bill, tip, people);
 
   useEffect(() => {
     if (bill >= 0 && tip >= 0 && tip < 1000 && people > 0) {
@@ -68,6 +80,8 @@ const MainContainer: React.FC<MainContainerProps> = () => {
         <div className={styles.container}>
           <InputContainer
             register={register}
+            resetField={resetField}
+            tip={tip}
             errors={errors}
             rules={{
               required: "The field should not be empty",

@@ -1,5 +1,5 @@
 import React from "react";
-import { UseFormRegister, FieldErrors, RegisterOptions } from "react-hook-form";
+import { UseFormRegister, FieldErrors, RegisterOptions, UseFormResetField } from "react-hook-form";
 
 import { InputItem } from "components/InputItem";
 import { ToggleComponent } from "components/ToggleComponent";
@@ -24,6 +24,9 @@ export interface InputContainerProps {
   register: UseFormRegister<IFormValues>;
   errors: FieldErrors<IFormValues>;
   rules: RegisterOptions;
+  // resetField?: UseFormResetField<Pick<IFormValues, "tip">>;
+  resetField?: UseFormResetField<IFormValues>;
+  tip?: number;
 }
 
 const InputContainer: React.FC<InputContainerProps> = ({
@@ -37,6 +40,8 @@ const InputContainer: React.FC<InputContainerProps> = ({
   errors,
   rules,
   register,
+  resetField,
+  tip,
 }) => {
   return (
     <div className={styles.inputContainer}>
@@ -58,6 +63,8 @@ const InputContainer: React.FC<InputContainerProps> = ({
         placeholder="custom"
         register={register}
         errors={errors}
+        resetField={resetField}
+        tip={tip}
         rules={{ min: { value: 0, message: `Min value is 0` }, max: { value: 999, message: `Max value is 999` } }}
       />
       <InputItem

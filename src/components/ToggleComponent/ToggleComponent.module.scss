@@ -16,6 +16,7 @@
   color: var(--grayish-cyan);
   font-size: var(--fzLabelMin);
 }
+
 .input {
   background-color: var(--very-light-grayish-cyan);
   padding: 15px;
@@ -36,8 +37,18 @@
     font-size: 20px;
   }
 }
+.btnContainer {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
 
 .btn {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
   text-transform: uppercase;
   padding: 15px;
   color: var(--light-grayish-cyan);
@@ -49,10 +60,8 @@
   font-size: 20px;
 
   &:hover {
-    color: var(--very-dark-cyan);
-    background-color: var(--light-grayish-cyan);
-    transition: background-color 300ms ease-out;
   }
+
   &:disabled {
     background-color: var(--dark-grayish-cyan);
     cursor: auto;
@@ -85,5 +94,14 @@
 
   .error {
     font-size: 12px;
+  }
+}
+@media (min-width: 960px) {
+  .btn {
+    &:hover {
+      color: var(--very-dark-cyan);
+      background-color: var(--light-grayish-cyan);
+      transition: background-color 300ms ease-out;
+    }
   }
 }

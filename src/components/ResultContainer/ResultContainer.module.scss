@@ -6,11 +6,19 @@
   background-color: var(--very-dark-cyan);
   border-radius: 15px;
   border: none;
-  gap: 30px;
+  gap: 10px;
 }
 
 .resultItems {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 10px;
+}
+@media (min-width: 580px) {
+  .resultContainer {
+    gap: 30px;
+  }
+  .resultItems {
+    gap: 40px;
+  }
 }
