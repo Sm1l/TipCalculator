@@ -52,8 +52,8 @@ const InputContainer: React.FC<InputContainerProps> = ({
         imgItem="dollar"
         rules={{
           required: "fill the field",
-          // value: 0,
           min: { value: 0, message: `Min value is 0` },
+          pattern: { value: /^[1-9]\d*$/, message: "Only integer number" },
         }}
         register={register}
         errors={errors}
@@ -74,7 +74,12 @@ const InputContainer: React.FC<InputContainerProps> = ({
         imgItem="people"
         register={register}
         errors={errors}
-        rules={{ required: "fill the field", value: 1, min: { value: 1, message: `Min value is 1` } }}
+        rules={{
+          required: "fill the field",
+          value: 1,
+          min: { value: 1, message: `Min value is 1` },
+          pattern: { value: /^[1-9]\d*$/, message: "Only integer number" },
+        }}
       />
     </div>
   );
