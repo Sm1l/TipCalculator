@@ -67,7 +67,7 @@ const MainContainer: React.FC<MainContainerProps> = () => {
   // console.log(bill, tip, people);
 
   useEffect(() => {
-    if (bill >= 0 && tip >= 0 && tip < 1000 && people > 0) {
+    if (bill >= 0 && tip >= 0 && tip < 1000 && people > 0 && Number.isInteger(people)) {
       setTimAmount(calcTipAmount(bill, tip, people));
       setTotal(calcTotal(bill, tip, people));
     }

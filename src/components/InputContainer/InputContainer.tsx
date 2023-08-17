@@ -29,20 +29,7 @@ export interface InputContainerProps {
   tip?: number;
 }
 
-const InputContainer: React.FC<InputContainerProps> = ({
-  // bill,
-  // setBill,
-  // tip,
-  // setTip,
-  // people,
-  // setPeople,
-  // clear,
-  errors,
-  rules,
-  register,
-  resetField,
-  tip,
-}) => {
+const InputContainer: React.FC<InputContainerProps> = ({ errors, rules, register, resetField, tip }) => {
   return (
     <div className={styles.inputContainer}>
       <InputItem

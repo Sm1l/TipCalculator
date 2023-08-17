@@ -4,6 +4,7 @@ import styles from "./InputItem.module.scss";
 
 import { ReactComponent as ImgDollar } from "images/icon-dollar.svg";
 import { ReactComponent as ImgPerson } from "images/icon-person.svg";
+import { ReactComponent as ImgRouble } from "images/icon-rouble.svg";
 
 import { IFormValues } from "components/MainContainer";
 
@@ -66,7 +67,7 @@ const InputItem: React.FC<InputItemProps> = ({ name, title, placeholder, imgItem
         autoComplete="off"
         {...(register && register(name, rules))}
       />
-      {imgItem === "dollar" && <ImgDollar className={styles.img} />}
+      {imgItem === "dollar" && <ImgRouble className={styles.img} />}
       {imgItem === "people" && <ImgPerson className={styles.img} />}
       <div className={styles.error}>{errors?.[`${name}`] && <p>{errors?.[`${name}`]?.message || "error"}</p>}</div>
     </div>
