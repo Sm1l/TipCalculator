@@ -24,17 +24,16 @@ const MainContainer: React.FC<MainContainerProps> = () => {
 
   const {
     register,
-    handleSubmit,
     reset,
     watch,
     resetField,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<IFormValues>({ mode: "onBlur" });
 
-  const handleReset = handleSubmit(() => {
+  const handleReset = () => {
     reset();
     setTip(0); //*clear state
-  });
+  };
 
   const watchBill = watch("bill");
   const watchTip = watch("tip");
@@ -89,7 +88,13 @@ const MainContainer: React.FC<MainContainerProps> = () => {
               max: { value: 31, message: "Max value is 31" },
             }}
           />
-          <ResultContainer setBill={setBill} total={total} tipAmount={tipAmount} handleReset={handleReset} />
+          <ResultContainer
+            setBill={setBill}
+            total={total}
+            tipAmount={tipAmount}
+            handleReset={handleReset}
+            isDirty={isDirty}
+          />
         </div>
       </form>
     </main>

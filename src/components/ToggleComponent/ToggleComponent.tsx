@@ -23,7 +23,7 @@ const ToggleComponent: React.FC<ToggleComponentProps> = ({ name, placeholder, er
                 className={tipValue === tip ? `${styles.btn} ${styles.active}` : `${styles.btn}`}
                 htmlFor={tipValue.toString()}
               >
-                {tipValue}
+                {tipValue}%
               </label>
               <input
                 className={styles.radio}

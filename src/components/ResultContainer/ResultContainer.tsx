@@ -9,16 +9,17 @@ interface ResultContainerProps {
   total: number;
   setBill: React.Dispatch<React.SetStateAction<number>>;
   handleReset: React.MouseEventHandler<HTMLButtonElement>;
+  isDirty: boolean;
 }
 
-const ResultContainer: React.FC<ResultContainerProps> = ({ tipAmount, total, handleReset }) => {
+const ResultContainer: React.FC<ResultContainerProps> = ({ tipAmount, total, handleReset, isDirty }) => {
   return (
     <div className={styles.resultContainer}>
       <div className={styles.resultItems}>
         <ResultItem text="tip amount" num={tipAmount} />
         <ResultItem text="total" num={total} />
       </div>
-      <Button text="reset" type="button" buttonClick={handleReset} />
+      <Button text="reset" type="button" buttonClick={handleReset} isDirty={isDirty} />
     </div>
   );
 };

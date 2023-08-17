@@ -20,5 +20,8 @@
       background-color: var(--light-grayish-cyan);
       transition: background-color 300ms ease-out;
     }
+    &:disabled:hover {
+      background-color: var(--dark-grayish-cyan);
+    }
   }
 }
